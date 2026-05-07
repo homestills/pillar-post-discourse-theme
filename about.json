@@ -2,22 +2,5 @@
   "name": "Pillar & Post",
   "about_url": "https://pillar-and-post.com",
   "license_url": null,
-  "component": false,
-  "color_schemes": [
-    {
-      "name": "Pillar & Post Dark",
-      "colors": {
-        "primary": "dedad3",
-        "secondary": "9d8f79",
-        "tertiary": "9d8f79",
-        "quaternary": "9d8f79",
-        "header_background": "111210",
-        "header_primary": "dedad3",
-        "highlight": "9d8f79",
-        "danger": "b85450",
-        "success": "6d9c6d",
-        "love": "b85450"
-      }
-    }
-  ]
+  "component": false
 }
