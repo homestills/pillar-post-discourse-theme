@@ -1,11 +1,10 @@
 // Pillar & Post brand tokens
-$color-bg:          #111210;
-$color-surface:     #1c1b18;
-$color-surface-alt: #242220;
-$color-ink:         #dedad3;
-$color-muted:       #7a766f;
-$color-accent:      #9d8f79;
-$color-divider:     rgba(255, 255, 255, 0.08);
+$color-bg:      #111210;
+$color-surface: #1c1b18;
+$color-ink:     #dedad3;
+$color-muted:   #7a766f;
+$color-accent:  #9d8f79;
+$color-divider: rgba(255, 255, 255, 0.08);
 
 $font-display: 'Cormorant Garamond', serif;
 $font-sans:    'Inter', sans-serif;
@@ -14,23 +13,19 @@ $font-sans:    'Inter', sans-serif;
 
 body {
   background-color: $color-bg;
-  color: $color-ink;
   font-family: $font-sans;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6,
-.cooked h1, .cooked h2, .cooked h3 {
+h1, h2, h3, h4, h5, h6 {
   font-family: $font-display;
   font-weight: 400;
-  color: $color-ink;
 }
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 
-#main-outlet-wrapper,
 .d-header {
   background-color: $color-bg;
   border-bottom: 1px solid $color-divider;
@@ -42,28 +37,45 @@ h1, h2, h3, h4, h5, h6,
   padding-bottom: 0.75rem;
 }
 
-// Logo sizing — set via Admin → Site Settings → Logo
+// Logo — upload via Admin → Site Settings → Logo
 .d-header .title a img.logo-big {
   height: 2rem;
   width: auto;
-  max-width: 130px;
+  max-width: 140px;
 }
 
-// ─── Navigation & links ───────────────────────────────────────────────────────
+// Site title text fallback: match Astro brand font
+.d-header .title a {
+  font-family: $font-display;
+  font-weight: 300;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-ink;
+}
+
+// ─── Accents: links, active tabs, active sidebar items ───────────────────────
 
 a {
   color: $color-accent;
   &:hover { color: $color-ink; }
 }
 
-.nav-pills > li > a,
-.select-kit-header,
-.topic-list .category-name {
-  color: $color-muted;
-  &:hover { color: $color-ink; }
+// Active nav tab
+.nav-pills > li.active > a,
+.nav-pills > li > a.active {
+  color: $color-accent;
+  background: transparent;
+  border-bottom: 2px solid $color-accent;
 }
 
-// ─── Buttons ──────────────────────────────────────────────────────────────────
+// Active sidebar link
+.sidebar-section-link.active,
+.sidebar-section-link-wrapper a.active {
+  color: $color-accent;
+}
+
+// ─── Primary buttons ──────────────────────────────────────────────────────────
 
 .btn-primary,
 .btn.btn-primary {
@@ -75,16 +87,53 @@ a {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: 0.75rem;
+  border-radius: 0;
 
-  &:hover {
+  &:hover, &:focus {
     background: $color-accent;
     color: $color-bg;
     border-color: $color-accent;
   }
 }
 
-.btn {
-  border-radius: 0;
+.btn { border-radius: 0; }
+
+// ─── Contrast safeguard ───────────────────────────────────────────────────────
+// Discourse light-mode components (wizard steps, alerts, highlighted boxes)
+// that render with a light background must use dark charcoal text.
+
+.wizard-step,
+.wizard-col,
+.alert,
+.alert-info,
+.d-notice,
+.tip,
+.education-message,
+.onebox,
+.cooked aside.quote,
+.cooked .lightbox-wrapper {
+  color: #1c1b18;
+}
+
+// Any element Discourse renders with an explicit white/near-white background
+[style*="background: #fff"],
+[style*="background:#fff"],
+[style*="background: white"],
+[style*="background-color: #fff"],
+[style*="background-color: white"] {
+  color: #1c1b18 !important;
+}
+
+// ─── Semi-transparent overlays instead of hard whites ────────────────────────
+
+.topic-map,
+.topic-map .contents,
+.suggested-topics-wrapper,
+.signup-cta {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px);
+  border: 1px solid $color-divider;
+  color: $color-ink;
 }
 
 // ─── Topic list ───────────────────────────────────────────────────────────────
@@ -94,9 +143,7 @@ a {
   border-bottom: 1px solid $color-divider;
   background: transparent;
 
-  &:hover {
-    background: $color-surface;
-  }
+  &:hover { background: rgba(0, 0, 0, 0.3); }
 }
 
 .topic-list th,
@@ -104,90 +151,31 @@ a {
   border-color: $color-divider;
 }
 
-// ─── Post / content ───────────────────────────────────────────────────────────
-
-#main-outlet {
-  background: $color-bg;
-}
-
-.topic-post article.boxed,
-.topic-post .row {
-  background: transparent;
-}
+// ─── Post content ─────────────────────────────────────────────────────────────
 
 .cooked {
-  font-family: $font-sans;
   font-weight: 300;
   line-height: 1.75;
-  color: $color-ink;
 
   blockquote {
-    background: $color-surface;
     border-left: 3px solid $color-accent;
-    color: $color-muted;
+    background: rgba(0, 0, 0, 0.35);
   }
 
-  code, pre {
-    background: $color-surface-alt;
-    color: $color-ink;
+  code {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0;
+  }
+
+  pre {
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid $color-divider;
     border-radius: 0;
   }
 }
 
-// ─── Sidebar ──────────────────────────────────────────────────────────────────
-
-.sidebar-wrapper,
-#main-outlet-wrapper .sidebar-container {
-  background: $color-surface;
-  border-right: 1px solid $color-divider;
-}
-
-.sidebar-section-link,
-.sidebar-section-link-wrapper a {
-  color: $color-muted;
-  &:hover, &.active { color: $color-ink; }
-}
-
-// ─── Category badges ──────────────────────────────────────────────────────────
-
-.badge-wrapper.bullet .badge-category-bg,
-.badge-wrapper.box .badge-category-bg {
-  border-radius: 0;
-}
-
-// ─── Input fields ────────────────────────────────────────────────────────────
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-.d-editor-textarea-wrapper {
-  background: $color-surface;
-  border: 1px solid $color-divider;
-  color: $color-ink;
-  border-radius: 0;
-
-  &:focus {
-    border-color: $color-accent;
-    outline: none;
-    box-shadow: none;
-  }
-}
-
-// ─── Modal ────────────────────────────────────────────────────────────────────
-
-.modal-inner-container,
-.d-modal .modal-inner-container {
-  background: $color-surface;
-  border: 1px solid $color-divider;
-  border-radius: 0;
-  color: $color-ink;
-}
-
 // ─── Custom footer ────────────────────────────────────────────────────────────
 
-// Hide Discourse's built-in footer elements
 #discourse-footer,
 .footer-message,
 footer.footer-nav-ipad {
@@ -229,12 +217,10 @@ footer.footer-nav-ipad {
   }
 }
 
-.pp-footer-logo {
-  img {
-    height: 1rem;
-    width: auto;
-    opacity: 0.6;
-  }
+.pp-footer-logo img {
+  height: 1rem;
+  width: auto;
+  opacity: 0.6;
 }
 
 .pp-footer-divider {
@@ -271,27 +257,15 @@ footer.footer-nav-ipad {
   }
 }
 
-// ─── Clean-up clutter ────────────────────────────────────────────────────────
+// ─── Clutter removal ─────────────────────────────────────────────────────────
 
-// "Powered by Discourse"
 .powered-by-discourse,
 a.powered-by {
   display: none !important;
 }
 
-// Hide the "About" banner on homepage
-.site-description {
-  display: none;
-}
+.site-description { display: none; }
 
-// Flatten borders across the board
-.topic-list,
-.topic-list-header,
-.latest-topic-list {
-  border-radius: 0;
-}
-
-// Remove rounded corners site-wide
-.btn, .badge-wrapper, .d-header, input, textarea, .select-kit {
+.btn, .badge-wrapper, input, textarea, .select-kit {
   border-radius: 0 !important;
 }
