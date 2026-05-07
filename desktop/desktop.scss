@@ -1,0 +1,22 @@
+// Desktop-only refinements
+
+// Wider content on large screens
+@media (min-width: 1200px) {
+  #main-outlet {
+    max-width: 860px;
+  }
+}
+
+// Footer two-column bottom row
+@media (min-width: 768px) {
+  .pp-footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+// Header logo sizing on desktop
+#pillar-post-logo {
+  height: 2rem;
+  max-width: 130px;
+}

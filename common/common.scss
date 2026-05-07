@@ -1,0 +1,297 @@
+// Pillar & Post brand tokens
+$color-bg:          #111210;
+$color-surface:     #1c1b18;
+$color-surface-alt: #242220;
+$color-ink:         #dedad3;
+$color-muted:       #7a766f;
+$color-accent:      #9d8f79;
+$color-divider:     rgba(255, 255, 255, 0.08);
+
+$font-display: 'Cormorant Garamond', serif;
+$font-sans:    'Inter', sans-serif;
+
+// ─── Base typography ──────────────────────────────────────────────────────────
+
+body {
+  background-color: $color-bg;
+  color: $color-ink;
+  font-family: $font-sans;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.cooked h1, .cooked h2, .cooked h3 {
+  font-family: $font-display;
+  font-weight: 400;
+  color: $color-ink;
+}
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+
+#main-outlet-wrapper,
+.d-header {
+  background-color: $color-bg;
+  border-bottom: 1px solid $color-divider;
+  box-shadow: none;
+}
+
+.d-header .wrap {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+// Logo sizing — set via Admin → Site Settings → Logo
+.d-header .title a img.logo-big {
+  height: 2rem;
+  width: auto;
+  max-width: 130px;
+}
+
+// ─── Navigation & links ───────────────────────────────────────────────────────
+
+a {
+  color: $color-accent;
+  &:hover { color: $color-ink; }
+}
+
+.nav-pills > li > a,
+.select-kit-header,
+.topic-list .category-name {
+  color: $color-muted;
+  &:hover { color: $color-ink; }
+}
+
+// ─── Buttons ──────────────────────────────────────────────────────────────────
+
+.btn-primary,
+.btn.btn-primary {
+  background: transparent;
+  border: 1px solid rgba($color-accent, 0.5);
+  color: $color-accent;
+  font-family: $font-sans;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+
+  &:hover {
+    background: $color-accent;
+    color: $color-bg;
+    border-color: $color-accent;
+  }
+}
+
+.btn {
+  border-radius: 0;
+}
+
+// ─── Topic list ───────────────────────────────────────────────────────────────
+
+.topic-list-item,
+.latest-topic-list-item {
+  border-bottom: 1px solid $color-divider;
+  background: transparent;
+
+  &:hover {
+    background: $color-surface;
+  }
+}
+
+.topic-list th,
+.topic-list td {
+  border-color: $color-divider;
+}
+
+// ─── Post / content ───────────────────────────────────────────────────────────
+
+#main-outlet {
+  background: $color-bg;
+}
+
+.topic-post article.boxed,
+.topic-post .row {
+  background: transparent;
+}
+
+.cooked {
+  font-family: $font-sans;
+  font-weight: 300;
+  line-height: 1.75;
+  color: $color-ink;
+
+  blockquote {
+    background: $color-surface;
+    border-left: 3px solid $color-accent;
+    color: $color-muted;
+  }
+
+  code, pre {
+    background: $color-surface-alt;
+    color: $color-ink;
+    border: 1px solid $color-divider;
+    border-radius: 0;
+  }
+}
+
+// ─── Sidebar ──────────────────────────────────────────────────────────────────
+
+.sidebar-wrapper,
+#main-outlet-wrapper .sidebar-container {
+  background: $color-surface;
+  border-right: 1px solid $color-divider;
+}
+
+.sidebar-section-link,
+.sidebar-section-link-wrapper a {
+  color: $color-muted;
+  &:hover, &.active { color: $color-ink; }
+}
+
+// ─── Category badges ──────────────────────────────────────────────────────────
+
+.badge-wrapper.bullet .badge-category-bg,
+.badge-wrapper.box .badge-category-bg {
+  border-radius: 0;
+}
+
+// ─── Input fields ────────────────────────────────────────────────────────────
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+.d-editor-textarea-wrapper {
+  background: $color-surface;
+  border: 1px solid $color-divider;
+  color: $color-ink;
+  border-radius: 0;
+
+  &:focus {
+    border-color: $color-accent;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// ─── Modal ────────────────────────────────────────────────────────────────────
+
+.modal-inner-container,
+.d-modal .modal-inner-container {
+  background: $color-surface;
+  border: 1px solid $color-divider;
+  border-radius: 0;
+  color: $color-ink;
+}
+
+// ─── Custom footer ────────────────────────────────────────────────────────────
+
+// Hide Discourse's built-in footer elements
+#discourse-footer,
+.footer-message,
+footer.footer-nav-ipad {
+  display: none !important;
+}
+
+#pillar-post-footer {
+  background: $color-surface;
+  border-top: 1px solid $color-divider;
+  padding: 4rem 0 2rem;
+  font-family: $font-sans;
+  margin-top: 3rem;
+}
+
+.pp-footer-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.pp-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+
+  a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-muted;
+    text-decoration: none;
+
+    &:hover { color: $color-ink; }
+  }
+}
+
+.pp-footer-logo {
+  img {
+    height: 1rem;
+    width: auto;
+    opacity: 0.6;
+  }
+}
+
+.pp-footer-divider {
+  width: 100%;
+  height: 1px;
+  background: $color-divider;
+}
+
+.pp-footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.pp-copyright {
+  font-size: 0.75rem;
+  color: $color-muted;
+  margin: 0;
+}
+
+.pp-footer-legal {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: $color-muted;
+    text-decoration: none;
+
+    &:hover { color: $color-ink; }
+  }
+}
+
+// ─── Clean-up clutter ────────────────────────────────────────────────────────
+
+// "Powered by Discourse"
+.powered-by-discourse,
+a.powered-by {
+  display: none !important;
+}
+
+// Hide the "About" banner on homepage
+.site-description {
+  display: none;
+}
+
+// Flatten borders across the board
+.topic-list,
+.topic-list-header,
+.latest-topic-list {
+  border-radius: 0;
+}
+
+// Remove rounded corners site-wide
+.btn, .badge-wrapper, .d-header, input, textarea, .select-kit {
+  border-radius: 0 !important;
+}
